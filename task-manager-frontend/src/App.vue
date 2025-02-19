@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import { useRouter, RouterLink, RouterView } from "vue-router";
+import Navbar from "./layout/Navbar.vue";
 
 const router = useRouter();
 

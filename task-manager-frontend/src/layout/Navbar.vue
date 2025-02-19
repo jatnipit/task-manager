@@ -45,9 +45,7 @@ const router = useRouter();
     </div>
     <div class="navbar-center">
       <!-- <a class="btn btn-ghost text-xl"></a> -->
-      <RouterLink to="{ name: 'Home' }" class="btn btn-ghost text-xl"
-        >Task Manager</RouterLink
-      >
+      <RouterLink to="/" class="btn btn-ghost text-xl">Task Manager</RouterLink>
     </div>
     <div class="navbar-end">
       <button class="btn btn-ghost btn-circle">
@@ -89,7 +87,9 @@ const router = useRouter();
             </a>
           </li>
           <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <li>
+            <RouterLink to="/login">Login</RouterLink>
+          </li>
         </ul>
       </div>
     </div>
