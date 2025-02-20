@@ -1,12 +1,37 @@
 <script setup>
 import { RouterLink, useRouter } from "vue-router";
+import { reactive } from "vue";
+import { POSITION, useToast } from "vue-toastification";
+import { login, register } from "../api/auth";
 
 const router = useRouter();
+const toast = useToast();
 
 const formData = reactive({
   username: "",
   password: "",
 });
+
+const handleLogin = async () => {
+  try {
+    await login(formData);
+    toast.success("Login successful", {
+      position: POSITION.TOP_RIGHT,
+      timeout: 3000,
+      // backgroundColor: "#2ecc71",
+      // color: "#fff",
+    });
+    router.push("/");
+  } catch (e) {
+    toast.error("Invalid username or password", {
+      position: POSITION.TOP_RIGHT,
+      timeout: 3000,
+      // backgroundColor: "#f8312f",
+      // color: "#fff",
+    });
+    console.error(e);
+  }
+};
 </script>
 
 <template>
@@ -20,7 +45,7 @@ const formData = reactive({
           </label>
           <input
             id="email"
-            type="email"
+            type="text"
             v-model="formData.username"
             placeholder="Enter your email or username"
             class="input input-bordered w-full"
